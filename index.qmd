@@ -1,0 +1,39 @@
+---
+title: "Bienvenue sur notre site d'analyse de données"
+author: "Nom du groupe"
+output: 
+  html_document:
+    theme: cosmo  # Pour un design simple et moderne
+---
+
+# Bienvenue sur notre site !
+
+Dans ce projet, nous explorons le lien entre l'innovation des entreprises, mesurée par les dépôts de brevets, et leurs besoins en compétences. Nous analyserons comment l'innovation influence des facteurs tels que les salaires et la demande de compétences spécifiques, notamment dans des domaines comme la data science.
+
+## Objectif du projet
+
+-   Analyser le lien entre innovation et demande de compétences.
+-   Étudier l'impact des brevets sur les salaires.
+-   Examiner la demande en data scientists.
+-   Analyser les besoins en compétences.
+-   Comprendre les relations entre innovation et compétences.
+
+## Membres du groupe
+
+Nous sommes un groupe de 4 étudiants et voici nos noms et prénoms :
+
+-   **Nom Prénom**\
+-   **Nom Prénom**\
+-   **Nom Prénom**\
+-   **Nom Prénom**
+
+## Navigation
+
+Explorez les différentes pages pour découvrir nos analyses détaillées :
+
+-   [**Statistiques Descriptives**](statistiques.qmd) : Une vue d'ensemble des données traitées et des statistiques clés.
+-   [**Analyse des Données**](analyse.qmd) : Nos analyses approfondies sur les liens entre brevets et offres d'emploi.
+
+------------------------------------------------------------------------
+
+N'hésitez pas à explorer les pages pour en savoir plus et découvrir les résultats de notre travail !

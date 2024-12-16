@@ -1,0 +1,104 @@
+---
+title: "Statistiques descriptives"
+
+format: html
+---
+
+# Statistiques descriptives
+
+Ce document présente les statistiques descriptives de la base de données `base_brevets`.
+
+### Variables numériques
+
+```{r}
+# Charger les bibliothèques nécessaires
+library(dplyr)
+
+
+base_brevets <- read.csv("base_brevet.csv", stringsAsFactors = FALSE)
+
+# Aperçu des données
+head(base_brevets)
+
+
+# Calcul des statistiques pour la variable numérique `n_patents`
+stats_n_patents <- base_brevets %>%
+
+  summarise(
+    min = min(n_patents, na.rm = TRUE),
+    median = median(n_patents, na.rm = TRUE),
+    maximum = max(n_patents, na.rm = TRUE),
+    moyenne = mean(n_patents, na.rm = TRUE),
+    `Écart-type`= sd(n_patents, na.rm = TRUE),
+    `Valeurs manquantes`= sum(is.na(n_patents))
+  )
+
+# Affichage des statistiques
+stats_n_patents
+```
+
+### Variables caractères
+
+```{r}
+# Top 5 firmes par nombre de brevets
+top_firm_name <- base_brevets %>%
+  group_by(firm_name) %>%
+  summarise(total_patents = sum(n_patents, na.rm = TRUE)) %>%
+  arrange(desc(total_patents)) %>%
+  slice_head(n = 5)
+
+# Affichage du tableau
+#top_firm_name
+
+
+# Top 5 descriptions IPC par nombre de brevets
+top_ipc_desc <- base_brevets %>%
+  group_by(ipc_main_desc) %>%
+  summarise(total_patents = sum(n_patents, na.rm = TRUE)) %>%
+  arrange(desc(total_patents)) %>%
+  slice_head(n = 5)
+
+# Affichage du tableau
+#top_ipc_desc
+
+
+
+
+# Top 5 villes par nombre de brevets
+top_addr_city <- base_brevets %>%
+  group_by(addr_city_main) %>%
+  summarise(total_patents = sum(n_patents, na.rm = TRUE)) %>%
+  arrange(desc(total_patents)) %>%
+  slice_head(n = 5)
+
+
+# Affichage du tableau
+#top_addr_city
+
+
+
+# Top 5 départements par nombre de brevets
+top_addr_dept <- base_brevets %>%
+  group_by(addr_dept_main) %>%
+  summarise(total_patents = sum(n_patents, na.rm = TRUE)) %>%
+  arrange(desc(total_patents)) %>%
+  slice_head(n = 5)
+
+# Affichage du tableau
+#top_addr_dept
+
+
+
+# Tableau des statistiques
+library(knitr)
+
+#kable(stats_n_patents, caption = "Statistiques pour la variable `n_patents`")
+kable(top_firm_name, caption = "Top 5 firmes par nombre de brevets")
+kable(top_ipc_desc, caption = "Top 5 descriptions principales IPC")
+kable(top_addr_city, caption = "Top 5 villes par nombre de brevets")
+kable(top_addr_dept, caption = "Top 5 départements par nombre de brevets")
+
+
+```
+
+------------------------------------------------------------------------
